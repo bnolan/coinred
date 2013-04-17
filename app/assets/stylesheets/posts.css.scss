@@ -1,0 +1,89 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+	font-family: sans-serif;
+	background: #f3f3f3;
+}
+
+#posts{
+	min-width: 840px;
+}
+
+.post{
+	width: 380px;
+	padding: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	float: left;
+	border: 1px solid #ccc;
+	-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+	background: white;
+	position: relative;
+
+	/*&:hover{
+		border: 1px solid #aaa;
+		-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+	}*/
+
+	h4{
+		margin: 0 0 10px 0;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+
+		a{
+			color: #333;
+			text-decoration: none;
+		}
+
+		a:hover{
+			text-decoration: underline;
+		}
+	}
+
+	.embed-image{
+		max-height: 480px;
+		overflow: hidden;
+
+		img{
+			max-width: 380px;
+		}
+	}
+
+	.meta{
+		border-top: 1px solid #ddd;
+		font-size: 0.8em;
+		color: #777;
+		padding-top: 10px;
+		margin: 0;
+	}
+
+	.arrows{
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		line-height: 20px;
+
+		a{
+			text-decoration: none;
+		}
+
+		.down-arrow{
+			color: #777;
+
+			&:hover{
+				color: #03f;
+			}
+		}
+
+		.up-arrow{
+			color: #777;
+
+			&:hover{
+				color: #f70;
+			}
+		}
+	}
+}

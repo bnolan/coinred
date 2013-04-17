@@ -1,0 +1,50 @@
+<h1>Reddit-coin</h1>
+
+<%= form_for Post.new do |f| %>
+	<h4>Post new link for coin karma</h4>
+
+	<div class="f">
+		<%= f.label :url %>
+		<%= f.text_field :url %>
+		<%= submit_tag "Post" %>
+	</div>
+<% end %>
+
+<hr />
+
+<h3>Recently popular</h3>
+
+<div id="posts">
+	<% @posts.each do |post| %>
+		<div class="post">
+			<h4><%= link_to post.title, post.url %></h4>
+
+			<% if post.embed_html.present? %>
+				<div class="embed-html" style="height: <%= post.embed_height %>px">
+					<%= post.embed_html.html_safe %>
+				</div>
+			<% elsif post.embed_image_url.present? %>
+				<div class="embed-image" style="height: <%= post.embed_height %>px">
+					<%= image_tag post.embed_image_url %>
+				</div>
+			<% end %>
+
+			<p class="meta">
+				Posted <%= time_ago_in_words(post.created_at) %> ago. <%= post.karma %> Karma.
+			</p>
+
+			<div class="arrows">
+				<%= link_to "&#x25B2;".html_safe, Vote.new(:post_id => post.id, :direction => 1), :class => 'up-arrow' %>
+				<%= link_to "&#x25BC;".html_safe, Vote.new(:post_id => post.id, :direction => -1), :class => 'down-arrow' %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<script>
+	setTimeout(function(){
+		$("#posts").masonry({
+		  itemSelector: ".post"
+		});
+	}, 250);
+</script>

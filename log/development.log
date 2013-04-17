@@ -1,0 +1,3474 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateUsers (20130416100147)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130416100147')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to AddDeviseToUsers (20130416100241)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130416100241')
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePosts (20130416100312)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "body" text, "url" text, "tags" text, "embed" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130416100312')
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateVotes (20130416100319)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "post_id" integer, "direction" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130416100319')
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at Tue Apr 16 22:33:50 +1200 2013
+Served asset /rails.png - 200 OK (11ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at Tue Apr 16 22:34:03 +1200 2013
+Served asset /rails.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at Tue Apr 16 22:34:04 +1200 2013
+Served asset /rails.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:34:13 +1200 2013
+
+AbstractController::ActionNotFound (The action 'index' could not be found for PostsController):
+  actionpack (3.2.13) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__81166889__call__4__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:34:29 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+Completed 500 Internal Server Error in 42ms
+
+ActionView::MissingTemplate (Missing template posts/index, application/index with {:formats=>[:html], :handlers=>[:builder, :coffee, :erb], :locale=>[:en]}. Searched in:
+  * "/Users/ben/Projects/reddit-coin/app/views"
+  * "/Library/Ruby/Gems/1.8/gems/devise-2.2.3/app/views"
+):
+  actionpack (3.2.13) lib/action_view/path_set.rb:58:in `find'
+  actionpack (3.2.13) lib/action_view/lookup_context.rb:109:in `find_template'
+  actionpack (3.2.13) lib/action_view/renderer/abstract_renderer.rb:3:in `__send__'
+  actionpack (3.2.13) lib/action_view/renderer/abstract_renderer.rb:3:in `find_template'
+  actionpack (3.2.13) lib/action_view/renderer/template_renderer.rb:34:in `determine_template'
+  actionpack (3.2.13) lib/action_view/renderer/template_renderer.rb:10:in `render'
+  actionpack (3.2.13) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.13) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.13) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.13) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.13) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.13) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  activesupport (3.2.13) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+  activesupport (3.2.13) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.13) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.13) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.13) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.13) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.13) lib/abstract_controller/callbacks.rb:18:in `process_action'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:414:in `_run__604986847__process_action__193850204__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `instrument'
+  activesupport (3.2.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.13) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.13) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__81166889__call__4__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:38:06 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+Completed 500 Internal Server Error in 24ms
+
+NoMethodError (undefined method `*' for #<Post:0x108134468>):
+  app/controllers/posts_controller.rb:4:in `index'
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:38:46 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (3.2ms)
+Compiled posts.css  (8ms)  (pid 62466)
+Compiled application.css  (27ms)  (pid 62466)
+Compiled jquery.js  (9ms)  (pid 62466)
+Compiled jquery_ujs.js  (0ms)  (pid 62466)
+Compiled jquery.masonry.js  (0ms)  (pid 62466)
+Compiled posts.js  (368ms)  (pid 62466)
+Compiled application.js  (512ms)  (pid 62466)
+Completed 200 OK in 722ms (Views: 709.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:38:47 +1200 2013
+Served asset /application.css - 200 OK (13ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:38:47 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:47 +1200 2013
+Served asset /jquery.js - 200 OK (72ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:47 +1200 2013
+Served asset /jquery_ujs.js - 200 OK (4ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:47 +1200 2013
+Served asset /jquery.masonry.js - 200 OK (2ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:47 +1200 2013
+Served asset /posts.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:47 +1200 2013
+Served asset /application.js - 200 OK (14ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 26ms (Views: 24.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:38:54 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 131ms (Views: 129.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:21 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:39:39 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (2.2ms)
+Compiled posts.css  (13ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 74ms (Views: 68.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:39:40 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:39:40 +1200 2013
+Served asset /application.css - 304 Not Modified (84ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:40 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:40 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:40 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:40 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:39:40 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (2.6ms)
+Compiled posts.css  (10ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 79ms (Views: 74.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:02 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (2.4ms)
+Compiled posts.css  (81ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 134ms (Views: 132.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Served asset /application.css - 304 Not Modified (17ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:33 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:40:41 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+Compiled posts.css  (20ms)  (pid 62466)
+Compiled application.css  (77ms)  (pid 62466)
+Completed 200 OK in 151ms (Views: 147.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:42 +1200 2013
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:42 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:42 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:42 +1200 2013
+Served asset /posts.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:42 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:42 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:42 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (2.4ms)
+Compiled posts.css  (16ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 164ms (Views: 161.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:50 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (3.5ms)
+Compiled posts.css  (19ms)  (pid 62466)
+Compiled application.css  (3ms)  (pid 62466)
+Completed 200 OK in 83ms (Views: 80.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Served asset /posts.css - 200 OK (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:40:55 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:41:09 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Compiled posts.css  (31ms)  (pid 62466)
+Compiled application.css  (3ms)  (pid 62466)
+Completed 200 OK in 96ms (Views: 93.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:10 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:41:10 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:10 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:41:10 +1200 2013
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:10 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:10 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:10 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (2.8ms)
+Compiled posts.css  (30ms)  (pid 62466)
+Compiled application.css  (1ms)  (pid 62466)
+Completed 200 OK in 87ms (Views: 84.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:41:18 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:43:55 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (50.9ms)
+Completed 500 Internal Server Error in 56ms
+
+ActionView::Template::Error (undefined method `submit_tag' for #<ActionView::Helpers::FormBuilder:0x10814b0c8>):
+    3: 	<div class="f">
+    4: 		<%= f.label :url %>
+    5: 		<%= f.text_field :url %>
+    6: 		<%= f.submit_tag "Post" %>
+    7: 	</div>
+    8: <% end %>
+    9: 
+  app/views/posts/index.html.erb:6:in `_app_views_posts_index_html_erb___256751972_2215333480'
+  app/views/posts/index.html.erb:2:in `_app_views_posts_index_html_erb___256751972_2215333480'
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.8ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 85ms (Views: 83.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:01 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" LIMIT 1
+  Rendered posts/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 40ms (Views: 37.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:05 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" LIMIT 1[0m
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 90ms (Views: 88.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:44:42 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 22:44:45 +1200 2013
+
+AbstractController::ActionNotFound (The action 'create' could not be found for PostsController):
+  actionpack (3.2.13) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:35:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__81166889__call__4__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 22:45:17 +1200 2013
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"url"=>"http://www.youtube.com/watch?v=U7mPqycQ0tQ"}, "authenticity_token"=>"HBBu75VjbDwl+9qgFyrCsvqA9jPO/h41DbYasI3yJH4=", "commit"=>"Post"}
+  [1m[35m (0.7ms)[0m  begin transaction
+  [1m[36mSQL (8.5ms)[0m  [1mINSERT INTO "posts" ("body", "created_at", "embed", "tags", "title", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", nil], ["created_at", Tue, 16 Apr 2013 10:45:18 UTC +00:00], ["embed", "{\"thumbnail_height\":360,\"type\":\"video\",\"title\":\"Girls` Generation(소녀시대) _ Gee _ MusicVideo\",\"thumbnail_width\":480,\"thumbnail_url\":\"http://i2.ytimg.com/vi/U7mPqycQ0tQ/hqdefault.jpg\",\"version\":\"1.0\",\"author_url\":\"http://www.youtube.com/user/sment\",\"width\":320,\"height\":180,\"url\":\"http://www.youtube.com/watch?v=U7mPqycQ0tQ\",\"provider_url\":\"http://www.youtube.com/\",\"provider_name\":\"YouTube\",\"html\":\"<iframe width=\\\"320\\\" height=\\\"180\\\" src=\\\"http://www.youtube.com/embed/U7mPqycQ0tQ?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>\",\"author_name\":\"sment\",\"description\":\"♪ Download on iTunes = http://itunes.apple.com/us/album/oh/id353108212 ☞ For more Information : http://girlsgeneration.smtown.com/ ※ EXTRAS ■ Girls' Generation Gee Live Wallpaper & Widget app (Android market) https://market.android.com/details?id=net.sskin.themeinstaller.DLTO_1303298262202&hl=en ♬ Girls' Generation Gee ℗ S.M.Entertainment\"}"], ["tags", nil], ["title", "Girls` Generation(소녀시대) _ Gee _ MusicVideo"], ["updated_at", Tue, 16 Apr 2013 10:45:18 UTC +00:00], ["url", "http://www.youtube.com/watch?v=U7mPqycQ0tQ"], ["user_id", nil]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:5000/posts
+Completed 302 Found in 948ms (ActiveRecord: 10.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:45:18 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 91ms (Views: 88.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:45:19 +1200 2013
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:45:19 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:45:19 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:45:19 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:45:19 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:45:19 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:45:19 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:46:00 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (3.3ms)
+Compiled posts.css  (25ms)  (pid 62466)
+Compiled application.css  (5ms)  (pid 62466)
+Completed 200 OK in 156ms (Views: 153.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:46:01 +1200 2013
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:46:01 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:46:01 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:46:01 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:46:01 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:46:01 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:46:01 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:47:00 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (3.3ms)
+Compiled posts.css  (96ms)  (pid 62466)
+Compiled application.css  (3ms)  (pid 62466)
+Completed 200 OK in 170ms (Views: 154.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:47:00 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:47:00 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:47:00 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:47:00 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:47:00 +1200 2013
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:47:00 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:47:01 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 22:48:11 +1200 2013
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"url"=>"http://www.youtube.com/watch?v=_z2O289Jemo"}, "authenticity_token"=>"HBBu75VjbDwl+9qgFyrCsvqA9jPO/h41DbYasI3yJH4=", "commit"=>"Post"}
+  [1m[35m (5.3ms)[0m  begin transaction
+  [1m[36mSQL (3.2ms)[0m  [1mINSERT INTO "posts" ("body", "created_at", "embed", "tags", "title", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", nil], ["created_at", Tue, 16 Apr 2013 10:48:13 UTC +00:00], ["embed", "{\"thumbnail_height\":358,\"type\":\"video\",\"title\":\"Tool - Parabola\",\"thumbnail_width\":480,\"thumbnail_url\":\"http://i4.ytimg.com/vi/_z2O289Jemo/hqdefault.jpg\",\"version\":\"1.0\",\"author_url\":\"http://www.youtube.com/user/dachort\",\"width\":380,\"height\":214,\"url\":\"http://www.youtube.com/watch?v=_z2O289Jemo\",\"provider_url\":\"http://www.youtube.com/\",\"provider_name\":\"YouTube\",\"html\":\"<iframe width=\\\"380\\\" height=\\\"214\\\" src=\\\"http://www.youtube.com/embed/_z2O289Jemo?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>\",\"author_name\":\"dachort\",\"description\":\"The Music video for Tool's song \\\"Parabola\\\"\"}"], ["tags", nil], ["title", "Tool - Parabola"], ["updated_at", Tue, 16 Apr 2013 10:48:13 UTC +00:00], ["url", "http://www.youtube.com/watch?v=_z2O289Jemo"], ["user_id", nil]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Redirected to http://localhost:5000/posts
+Completed 302 Found in 1814ms (ActiveRecord: 9.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:48:13 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 222ms (Views: 216.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:48:14 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:48:14 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:48:14 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:48:14 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:48:14 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:48:14 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:48:14 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:50:01 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (1.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (39.2ms)
+Completed 200 OK in 77ms (Views: 62.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:50:02 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:50:02 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:50:02 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:50:02 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:50:02 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:50:02 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:50:02 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (10.4ms)
+Compiled posts.css  (28ms)  (pid 62466)
+Compiled application.css  (1ms)  (pid 62466)
+Completed 200 OK in 153ms (Views: 151.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:51:51 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:52:02 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 47ms (Views: 43.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:52:03 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:52:03 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:03 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:03 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:03 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:03 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:03 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:52:51 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (78.2ms)
+Completed 500 Internal Server Error in 119ms
+
+ActionView::Template::Error (Invalid CSS after "		right": expected ";", was ": 10px;"
+  (in /Users/ben/Projects/reddit-coin/app/assets/stylesheets/posts.css.scss)):
+    2: <html>
+    3: <head>
+    4:   <title>RedditCoin</title>
+    5:   <%= stylesheet_link_tag    "application", :media => "all" %>
+    6:   <%= javascript_include_tag "application" %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/assets/stylesheets/posts.css.scss:40
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___476771096_2212525540'
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (8.6ms)
+Compiled posts.css  (106ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 165ms (Views: 161.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Served asset /posts.css - 200 OK (9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:52:57 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:53:14 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (8.1ms)
+Compiled posts.css  (111ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 171ms (Views: 168.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:15 +1200 2013
+Served asset /posts.css - 200 OK (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:15 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:15 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:15 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:15 +1200 2013
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:15 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:15 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (7.4ms)
+Compiled posts.css  (32ms)  (pid 62466)
+Compiled application.css  (1ms)  (pid 62466)
+Completed 200 OK in 156ms (Views: 153.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Served asset /posts.css - 200 OK (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:23 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (9.2ms)
+Compiled posts.css  (98ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 157ms (Views: 154.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:39 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (9.6ms)
+Compiled posts.css  (102ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 161ms (Views: 158.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:42 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:53:52 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (8.8ms)
+Compiled posts.css  (34ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 167ms (Views: 164.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:52 +1200 2013
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:52 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:52 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:52 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:53:52 +1200 2013
+Served asset /posts.css - 200 OK (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:53 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:53:53 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (8.6ms)
+Compiled posts.css  (106ms)  (pid 62466)
+Compiled application.css  (1ms)  (pid 62466)
+Completed 200 OK in 160ms (Views: 157.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:00 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:54:07 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  Rendered posts/index.html.erb within layouts/application (9.1ms)
+Compiled posts.css  (103ms)  (pid 62466)
+Compiled application.css  (3ms)  (pid 62466)
+Completed 200 OK in 162ms (Views: 158.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:07 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:54:07 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:07 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:54:08 +1200 2013
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:08 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:08 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:54:08 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 22:55:00 +1200 2013
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"url"=>"http://www.flickr.com/photos/glenngould/8628995883/"}, "authenticity_token"=>"HBBu75VjbDwl+9qgFyrCsvqA9jPO/h41DbYasI3yJH4=", "commit"=>"Post"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "posts" ("body", "created_at", "embed", "tags", "title", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", nil], ["created_at", Tue, 16 Apr 2013 10:55:03 UTC +00:00], ["embed", "{\"thumbnail_height\":75,\"type\":\"photo\",\"title\":\"11/52 Dream sweet dreams of you...\",\"thumbnail_width\":75,\"thumbnail_url\":\"http://farm9.staticflickr.com/8121/8628995883_fffc60cb5a_s.jpg\",\"version\":\"1.0\",\"author_url\":\"http://www.flickr.com/photos/glenngould/\",\"width\":1024,\"cache_age\":3600,\"url\":\"http://farm9.staticflickr.com/8121/8628995883_fffc60cb5a_b.jpg\",\"height\":683,\"provider_url\":\"http://www.flickr.com/\",\"provider_name\":\"Flickr\",\"author_name\":\"Sohail.Fazluddin\",\"description\":\"Number 11 has been special to me all my life. I'm certain the origin has something to do with my birthday being on the 11th of May. Since then it's become an interesting thing for me to make note of; Important things that happen with 11 are too numerous to name, but for those who love Doctor Who, my favourite Doctor, quite by far is the 11th.\"}"], ["tags", nil], ["title", "11/52 Dream sweet dreams of you..."], ["updated_at", Tue, 16 Apr 2013 10:55:03 UTC +00:00], ["url", "http://www.flickr.com/photos/glenngould/8628995883/"], ["user_id", nil]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:5000/posts
+Completed 302 Found in 3349ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:55:03 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4[0m
+  Rendered posts/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 57ms (Views: 54.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:55:04 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:55:04 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:04 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:04 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:04 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:04 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:04 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 22:55:31 +1200 2013
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"url"=>"http://www.flickr.com/photos/glenngould/8335993777/"}, "authenticity_token"=>"HBBu75VjbDwl+9qgFyrCsvqA9jPO/h41DbYasI3yJH4=", "commit"=>"Post"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "posts" ("body", "created_at", "embed", "tags", "title", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", nil], ["created_at", Tue, 16 Apr 2013 10:55:34 UTC +00:00], ["embed", "{\"thumbnail_height\":75,\"type\":\"photo\",\"title\":\"Mangrove Boardwalk Walk\",\"thumbnail_width\":75,\"thumbnail_url\":\"http://farm9.staticflickr.com/8221/8335993777_451c28f307_s.jpg\",\"version\":\"1.0\",\"author_url\":\"http://www.flickr.com/photos/glenngould/\",\"width\":683,\"cache_age\":3600,\"url\":\"http://farm9.staticflickr.com/8221/8335993777_451c28f307_b.jpg\",\"height\":1024,\"provider_url\":\"http://www.flickr.com/\",\"provider_name\":\"Flickr\",\"author_name\":\"Sohail.Fazluddin\",\"description\":\"A New Place discovered today.\"}"], ["tags", nil], ["title", "Mangrove Boardwalk Walk"], ["updated_at", Tue, 16 Apr 2013 10:55:34 UTC +00:00], ["url", "http://www.flickr.com/photos/glenngould/8335993777/"], ["user_id", nil]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:5000/posts
+Completed 302 Found in 3125ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:55:34 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5
+  Rendered posts/index.html.erb within layouts/application (86.3ms)
+Completed 200 OK in 110ms (Views: 107.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:55:35 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:55:35 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:35 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:35 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:35 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:35 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:55:35 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5
+  Rendered posts/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 117ms (Views: 102.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:57:36 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:58:06 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5
+  Rendered posts/index.html.erb within layouts/application (12.4ms)
+Compiled posts.css  (105ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 171ms (Views: 167.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:58:07 +1200 2013
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:58:07 +1200 2013
+Served asset /posts.css - 200 OK (11ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:58:07 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:58:07 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:58:07 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:58:07 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:58:07 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5
+  Rendered posts/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 108ms (Views: 105.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:21 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 22:59:28 +1200 2013
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"url"=>"http://www.youtube.com/watch?v=6rPVszLc7n0"}, "authenticity_token"=>"HBBu75VjbDwl+9qgFyrCsvqA9jPO/h41DbYasI3yJH4=", "commit"=>"Post"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "posts" ("body", "created_at", "embed", "tags", "title", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["body", nil], ["created_at", Tue, 16 Apr 2013 10:59:31 UTC +00:00], ["embed", "{\"thumbnail_height\":360,\"type\":\"video\",\"title\":\"Foo Fighters - Dear Rosemary ** HQ ** (OFFICIAL MUSIC VIDEO)\",\"thumbnail_width\":480,\"thumbnail_url\":\"http://i3.ytimg.com/vi/6rPVszLc7n0/hqdefault.jpg\",\"version\":\"1.0\",\"author_url\":\"http://www.youtube.com/user/wearewendel\",\"width\":380,\"height\":214,\"url\":\"http://www.youtube.com/watch?v=6rPVszLc7n0\",\"provider_url\":\"http://www.youtube.com/\",\"provider_name\":\"YouTube\",\"html\":\"<iframe width=\\\"380\\\" height=\\\"214\\\" src=\\\"http://www.youtube.com/embed/6rPVszLc7n0?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>\",\"author_name\":\"wearewendel\",\"description\":\"Foo Fighters - Dear Rosemary Director: Karl E. Richter DP: Tim Burton Producer: Russell Greene Production/Post: wendel www.wearewendel.com Join us on Facebook: http://www.facebook.com/pages/wearewendel/247048557150 Foo Fighters: http://www.foofighters.com Sony/ RCA chose us out of thousands of portfolios as one of 9 creators to make a music video for their song 'Dear Rosemary' on the Foo Fighters' 2011 release 'Wasting Light'.\"}"], ["tags", nil], ["title", "Foo Fighters - Dear Rosemary ** HQ ** (OFFICIAL MUSIC VIDEO)"], ["updated_at", Tue, 16 Apr 2013 10:59:31 UTC +00:00], ["url", "http://www.youtube.com/watch?v=6rPVszLc7n0"], ["user_id", nil]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:5000/posts
+Completed 302 Found in 2292ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (5.7ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  Rendered posts/index.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 51ms (Views: 41.0ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:31 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 22:59:48 +1200 2013
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"url"=>"http://www.flickr.com/photos/mastahkid2006/8523161787/in/photostream"}, "authenticity_token"=>"HBBu75VjbDwl+9qgFyrCsvqA9jPO/h41DbYasI3yJH4=", "commit"=>"Post"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "posts" ("body", "created_at", "embed", "tags", "title", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["body", nil], ["created_at", Tue, 16 Apr 2013 10:59:52 UTC +00:00], ["embed", "{\"thumbnail_height\":75,\"type\":\"photo\",\"title\":\"Untitled\",\"thumbnail_width\":75,\"thumbnail_url\":\"http://farm9.staticflickr.com/8244/8523161787_e660f40d25_s.jpg\",\"version\":\"1.0\",\"author_url\":\"http://www.flickr.com/photos/mastahkid2006/\",\"width\":1024,\"cache_age\":3600,\"url\":\"http://farm9.staticflickr.com/8244/8523161787_e660f40d25_b.jpg\",\"height\":683,\"provider_url\":\"http://www.flickr.com/\",\"provider_name\":\"Flickr\",\"author_name\":\"Mastahkid\",\"description\":\"Listen to Jamiroquai, Rock Dust Light Star\"}"], ["tags", nil], ["title", "Untitled"], ["updated_at", Tue, 16 Apr 2013 10:59:52 UTC +00:00], ["url", "http://www.flickr.com/photos/mastahkid2006/8523161787/in/photostream"], ["user_id", nil]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:5000/posts
+Completed 302 Found in 3514ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  Rendered posts/index.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 46ms (Views: 41.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 22:59:52 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (88.7ms)
+Completed 200 OK in 130ms (Views: 113.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:09 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 41ms (Views: 37.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:00:52 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:01:15 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 56ms (Views: 52.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:16 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:16 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:16 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:16 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:16 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:16 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:16 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 40ms (Views: 37.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:18 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 54ms (Views: 49.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:30 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 41ms (Views: 36.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:40 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 58ms (Views: 53.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:01:57 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:02:05 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.4ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 138ms (Views: 133.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:06 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:06 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:06 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:06 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:06 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:06 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:06 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:02:11 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 40ms (Views: 36.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:12 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:12 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:12 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:12 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:12 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:12 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:12 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 109ms (Views: 106.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:18 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:02:25 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 44ms (Views: 40.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:26 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:26 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:26 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:02:26 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:26 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:26 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:02:26 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:03:31 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 55ms (Views: 41.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:03:32 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:03:32 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:32 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:32 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:32 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:32 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:32 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 94ms (Views: 91.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:37 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:03:42 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 146ms (Views: 127.9ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:03:43 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:43 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:43 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:43 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:43 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:03:43 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:03:43 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:04:34 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 38ms (Views: 34.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:35 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:04:35 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:04:35 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:35 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:35 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:35 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:35 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:04:47 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 117ms (Views: 114.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:04:48 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:04:48 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:48 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:48 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:48 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:48 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:04:48 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 39ms (Views: 35.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:02 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:05:23 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (2.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (76.6ms)
+Compiled posts.css  (40ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 224ms (Views: 218.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:24 +1200 2013
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:24 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:24 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:24 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:24 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:24 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:24 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (14.5ms)
+Compiled posts.css  (118ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 175ms (Views: 171.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Served asset /posts.css - 200 OK (4ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:32 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:05:43 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (80.8ms)
+Compiled posts.css  (38ms)  (pid 62466)
+Compiled application.css  (1ms)  (pid 62466)
+Completed 200 OK in 220ms (Views: 215.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:44 +1200 2013
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:44 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:44 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:44 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:44 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:05:44 +1200 2013
+Served asset /posts.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:05:44 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 36ms (Views: 33.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:13 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:06:25 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 103ms (Views: 98.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:06:26 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:26 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:06:26 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:26 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:26 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:26 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:26 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:06:36 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (18.3ms)
+Compiled posts.css  (104ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 166ms (Views: 162.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:06:37 +1200 2013
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:37 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:37 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:37 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:06:37 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:37 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:06:37 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 53ms (Views: 37.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:00 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Tue Apr 16 23:08:28 +1200 2013
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"url"=>"http://www.youtube.com/watch?v=HLUX0y4EptA"}, "authenticity_token"=>"HBBu75VjbDwl+9qgFyrCsvqA9jPO/h41DbYasI3yJH4=", "commit"=>"Post"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "posts" ("body", "created_at", "embed", "tags", "title", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", nil], ["created_at", Tue, 16 Apr 2013 11:08:29 UTC +00:00], ["embed", "{\"thumbnail_height\":360,\"type\":\"video\",\"title\":\"Flobots - Handlebars\",\"thumbnail_width\":480,\"thumbnail_url\":\"http://i1.ytimg.com/vi/HLUX0y4EptA/hqdefault.jpg\",\"version\":\"1.0\",\"author_url\":\"http://www.youtube.com/user/FlobotsVEVO\",\"width\":380,\"height\":214,\"url\":\"http://www.youtube.com/watch?v=HLUX0y4EptA\",\"provider_url\":\"http://www.youtube.com/\",\"provider_name\":\"YouTube\",\"html\":\"<iframe width=\\\"380\\\" height=\\\"214\\\" src=\\\"http://www.youtube.com/embed/HLUX0y4EptA?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>\",\"author_name\":\"FlobotsVEVO\",\"description\":\"Music video by Flobots performing Handlebars. YouTube view counts pre-VEVO: 18,313,639. (C) 2008 Universal Republic Records, a division of UMG Recordings, Inc.\"}"], ["tags", nil], ["title", "Flobots - Handlebars"], ["updated_at", Tue, 16 Apr 2013 11:08:29 UTC +00:00], ["url", "http://www.youtube.com/watch?v=HLUX0y4EptA"], ["user_id", nil]]
+  [1m[35m (2.6ms)[0m  commit transaction
+Redirected to http://localhost:5000/posts
+Completed 302 Found in 546ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY created_at desc[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 8
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 48ms (Views: 43.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:08:29 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:12:19 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (25.2ms)
+Compiled posts.css  (129ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 216ms (Views: 209.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:20 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:12:20 +1200 2013
+Served asset /posts.css - 200 OK (7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:12:20 +1200 2013
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:20 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:20 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:20 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:20 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY created_at desc[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 8
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (15.2ms)
+Compiled posts.css  (98ms)  (pid 62466)
+Compiled application.css  (2ms)  (pid 62466)
+Completed 200 OK in 155ms (Views: 151.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Served asset /posts.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:12:40 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/..." for 127.0.0.1 at Tue Apr 16 23:13:01 +1200 2013
+
+ActionController::RoutingError (No route matches [GET] "/..."):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:14:05 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 8[0m
+  Rendered posts/index.html.erb within layouts/application (9.3ms)
+Completed 500 Internal Server Error in 23ms
+
+ActionView::Template::Error (Can't mass-assign protected attributes: direction, post_id):
+    34: 			</p>
+    35: 
+    36: 			<div class="arrows">
+    37: 				<%= link_to "&#x25B2;".html_safe, Vote.new(:post_id => post.id, :direction => 1), :class => 'up-arrow' %>
+    38: 				<%= link_to "&#x25BC;".html_safe, Vote.new(:post_id => post.id, :direction => -1), :class => 'down-arrow' %>
+    39: 			</div>
+    40: 		</div>
+  app/views/posts/index.html.erb:37:in `new'
+  app/views/posts/index.html.erb:37:in `_app_views_posts_index_html_erb___256751972_2212719040'
+  app/views/posts/index.html.erb:18:in `each'
+  app/views/posts/index.html.erb:18:in `_app_views_posts_index_html_erb___256751972_2212719040'
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" ORDER BY created_at desc
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 8[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1
+  Rendered posts/index.html.erb within layouts/application (37.3ms)
+Completed 200 OK in 69ms (Views: 55.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:14:19 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" ORDER BY created_at desc[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 8
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 7[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 6
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 5[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 4
+  [1m[36m (0.1ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 3[0m
+  [1m[35m (0.1ms)[0m  SELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM("votes"."direction") AS sum_id FROM "votes" WHERE "votes"."post_id" = 1[0m
+  Rendered posts/index.html.erb within layouts/application (41.3ms)
+Completed 200 OK in 78ms (Views: 66.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.masonry.js?body=1" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Served asset /jquery.masonry.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Apr 16 23:15:10 +1200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/votes" for 127.0.0.1 at Tue Apr 16 23:15:14 +1200 2013
+
+ActionController::RoutingError (uninitialized constant VotesController):
+  activesupport (3.2.13) lib/active_support/inflector/methods.rb:219:in `constantize'
+  activesupport (3.2.13) lib/active_support/inflector/methods.rb:218:in `each'
+  activesupport (3.2.13) lib/active_support/inflector/methods.rb:218:in `constantize'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:69:in `controller_reference'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:54:in `controller'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:32:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__81166889__call__4__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/votes" for 127.0.0.1 at Tue Apr 16 23:15:27 +1200 2013
+
+AbstractController::ActionNotFound (The action 'index' could not be found for VotesController):
+  actionpack (3.2.13) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__81166889__call__4__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.4ms)
+
+
+Started GET "/votes" for 127.0.0.1 at Tue Apr 16 23:15:52 +1200 2013
+
+AbstractController::ActionNotFound (The action 'index' could not be found for VotesController):
+  actionpack (3.2.13) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__81166889__call__4__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
+
+
+Started GET "/votes" for 127.0.0.1 at Tue Apr 16 23:15:56 +1200 2013
+
+AbstractController::ActionNotFound (The action 'index' could not be found for VotesController):
+  actionpack (3.2.13) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__81166889__call__4__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.4ms)
