@@ -5,8 +5,13 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		post = Post.create! params[:post]
-		redirect_to :action => :index
+		@post = current_user.posts.build params[:post]
+
+		if @post.save
+			redirect_to :action => :index
+		else
+			render :action => 'new'
+		end
 	end
 
 end

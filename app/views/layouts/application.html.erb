@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RedditCoin</title>
+  <title>coinred</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<h1><a href="/">coin<b>red</b></a></h1>
+
+<div class="auth">
+	<% if current_user %>
+		You have <%= current_user.karma %> karma, potentially worth <%= (current_user.bitcoin_worth * 1000.0).floor %> microBTC | 
+		<%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
+	<% else %>
+		<%= link_to "Register", new_user_registration_path %> |
+		<%= link_to "Sign in", new_user_session_path %>
+	<% end %>
+</div>
+
+<hr />
 
 <%= yield %>
 

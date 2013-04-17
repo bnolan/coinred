@@ -2,10 +2,15 @@ class Post < ActiveRecord::Base
 	require 'open-uri'
 	require 'cgi'
 
+  validates_uniqueness_of :url
+  validates_presence_of :url, :user_id
+
   attr_accessible :title, :body, :url
   serialize :embed, JSON
   before_save :set_embed
   has_many :votes
+  after_create :create_vote
+  belongs_to :user
 
   def karma
   	votes.sum('direction')
@@ -29,10 +34,15 @@ class Post < ActiveRecord::Base
 
 	end
 
-  # protected
+  protected
+
+  def create_vote
+    # lets assume they'll vote for themselves lolol
+    user.votes.create! :post_id => id, :direction => 1
+  end
 
   def set_embed
-  	if self.embed = JSON.parse(open(embedly_url) {|f| f.read } )
+  	if self.embed.blank? and self.embed = JSON.parse(open(embedly_url) {|f| f.read } )
   		self.title = self.embed['title']
   	end
   end

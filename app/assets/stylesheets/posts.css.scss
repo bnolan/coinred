@@ -7,8 +7,62 @@ body{
 	background: #f3f3f3;
 }
 
+h1{
+	letter-spacing: -1px;
+	text-shadow: 0 0 5px white;
+
+	a{
+		text-decoration: none;
+		color: #555;
+	}
+
+	b{
+		color: #700;
+	}
+}
+
+div.auth{
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+
 #posts{
 	min-width: 840px;
+	position: relative;
+
+	#overlay{
+		background-image: -webkit-linear-gradient(bottom, rgba(235,235,235,1), rgba(255,255,255,0));
+		border-bottom: 2000px solid rgba(235,235,235,1);
+
+		width: 100%;
+		position: absolute;
+		top: 100px;
+		height: 300px;
+		z-index: 1000;
+
+		.obutton{
+			position: absolute;
+			cursor: pointer;
+			top: 170px;
+			left: 50%;
+			margin-left: -150px;
+			background: white;
+			border-radius: 40px;
+			padding: 20px;
+			border: 2px solid #777;
+			-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+
+			a{
+				color: #777;
+
+				&:hover{
+					color: black;
+				}
+			}
+
+		}
+	}
 }
 
 .post{
@@ -62,12 +116,24 @@ body{
 
 	.arrows{
 		position: absolute;
-		bottom: 10px;
+		bottom: 0px;
 		right: 10px;
 		line-height: 20px;
 
-		a{
-			text-decoration: none;
+		form{
+			display: inline;
+			margin: 0;
+			padding: 0;
+
+			button, input{
+				cursor: pointer;
+				background: none;
+				border: none;
+				font: inherit;
+				line-height: 25px;
+				padding: 0 3px;
+				margin: 0;
+			}
 		}
 
 		.down-arrow{
